@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://player/player-mesh.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/mats/blue.tres" type="Material" id=3]
+[ext_resource path="res://gui/hud/HUD.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+height = 2.91114
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77954, 0 )
+billboard = 1
+
+[node name="Guy2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.00977395, 1.2465, 0.0770286 )
+material/0 = ExtResource( 3 )
+
+[node name="player-colision" type="CollisionShape" parent="."]
+transform = Transform( 0.806829, 0, 0, 0, -4.14665e-08, 0.543231, 0, -0.477686, -1.19569e-08, 0, 0.448549, 0 )
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 3.19486, 0.00483131, -0.000178656, -0.00748769, 2.0623, -0.00043197, 0.00203254, 0.00319361, 0.279221, -0.673149, 2.66501, 0.076087 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.341725, 0, 0, 0, 0.459445, 0, 0, 0, 0.295475, 0.166587, 0.107831, -2.46427 )
+shape = SubResource( 2 )
+
+[node name="HUD" parent="Area" instance=ExtResource( 4 )]
+margin_top = 1.0
+margin_right = 202.0
+margin_bottom = 90.0
