@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/shop.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/main.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 4.64844, 0.156302, 3.24336 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+albedo_color = Color( 0.156863, 0.388235, 0.121569, 1 )
+
+[sub_resource type="PanoramaSky" id=3]
+
+[sub_resource type="Environment" id=4]
+background_mode = 1
+background_sky = SubResource( 3 )
+background_color = Color( 0.513726, 0.858824, 0.901961, 1 )
+
+[node name="Node" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="prop1" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( -0.376547, 0.000473184, 0.926397, 0.00125664, 0.999999, 5.49293e-11, -0.926397, 0.00116414, -0.376548, -9.58436, 0.228304, -3.97815 )
+
+[node name="prop2" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 0.631813, 0, 0.775121, 0, 1, 0, -0.775121, 0, 0.631813, 9.34719, 0.228304, 2.27866 )
+
+[node name="level" type="StaticBody" parent="Spatial"]
+transform = Transform( 8.17884, 0, 0, 0, 1, 0, 0, 0, 8.84168, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/level"]
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Spatial/level"]
+width = 9.70885
+height = 0.490088
+depth = 6.42798
+material = SubResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )

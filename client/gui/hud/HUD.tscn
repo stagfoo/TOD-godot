@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gui/hud/HUD.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Fredoka_One/FredokaOne-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="TextureRect"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coins" type="RichTextLabel" parent="."]
+margin_left = 17.7865
+margin_top = 10.8697
+margin_right = 134.787
+margin_bottom = 80.8697
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/normal_font = SubResource( 1 )
+tab_size = 1
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
